@@ -1,6 +1,6 @@
 import 'package:pokeball/app/domain/entities/all_poke_entity.dart';
-import 'package:pokeball/core/usecase/usecase.dart';
-import 'package:pokeball/core/utils/resource.dart';
+import 'package:pokeball/core/config/usecase/usecase.dart';
+import 'package:pokeball/core/config/usecase/resource.dart';
 
 import '../repositories/poke_repository.dart';
 

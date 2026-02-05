@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pokeball/app/data/models/poke_evolution_response.dart';
-import 'package:pokeball/core/error/exceptions.dart';
-import 'package:pokeball/core/utils/constant.dart';
+import 'package:pokeball/core/config/error/exceptions.dart';
+import 'package:pokeball/core/utils/misc/constant.dart';
 
 import '../models/poke_all_response.dart';
 import '../models/poke_detail_response.dart';

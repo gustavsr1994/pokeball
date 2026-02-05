@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+
+final bugColor = Colors.lightGreen.shade700;
+final darkColor = Colors.blueGrey;
+final dragonColor = Colors.indigoAccent;
+final electricColor = Colors.amber;
+final fairyColor = Colors.pinkAccent;
+final fightingColor = Colors.orange;
+final fireColor = Colors.deepOrange;
+final flyingColor = Colors.lightBlueAccent;
+final ghostColor = Colors.purple.shade400;
+final grassColor = Colors.green;
+final groundColor = Colors.brown;
+final iceColor = Colors.cyan;
+final normalColor = Colors.grey;
+final poisonColor = Colors.deepPurple;
+final psychicColor = Colors.pink;
+final rockColor = Colors.lime.shade800;
+final steelColor = Colors.lightBlue.shade700;
+final stellarColor = Colors.tealAccent;
+final waterColor = Colors.blue;

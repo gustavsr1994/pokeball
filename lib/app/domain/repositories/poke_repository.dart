@@ -1,5 +1,5 @@
 import 'package:pokeball/app/domain/entities/all_poke_entity.dart';
-import 'package:pokeball/core/utils/resource.dart';
+import 'package:pokeball/core/config/usecase/resource.dart';
 
 abstract class PokeRepository {
   Future<Resource<List<AllPokeEntity>>> getAllPoke(int offset);

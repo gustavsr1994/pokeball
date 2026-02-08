@@ -15,4 +15,8 @@ class Component {
   static double scaleHeight(BuildContext context){
     return MediaQuery.sizeOf(context).height / 360;
   }
+  
+  static bool isTablet(BuildContext context) {
+    return sizeWidth(context) >= 600 ? true : false;
+  }
 }

@@ -2,10 +2,10 @@ import 'package:pokeball/app/domain/entities/all_poke_entity.dart';
 import 'package:pokeball/core/config/usecase/usecase.dart';
 import 'package:pokeball/core/config/usecase/resource.dart';
 
-import '../repositories/poke_repository.dart';
+import '../../data/repositoriesImpl/poke_repository_impl.dart';
 
 class GetPokeUsecase extends UseCase<List<AllPokeEntity>, int> {
-  final PokeRepository repository;
+  final PokeRepositoryImpl repository;
   GetPokeUsecase(this.repository);
 
   @override

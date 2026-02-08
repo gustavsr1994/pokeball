@@ -5,15 +5,17 @@ import 'package:pokeball/core/utils/misc/constant.dart';
 
 import '../models/poke_all_response.dart';
 import '../models/poke_detail_response.dart';
+import '../models/poke_species_response.dart';
 
 abstract class PokeDataSource {
   Future<List<DataPoke>> fetchAllPoke(int offset);
-  Future<PokeDetailResponse> fetchDetailPoke(int id);
-  Future<PokeEvolutionResponse> fetchEvolutionPoke(int id);
+  Future<PokeDetailResponse> fetchDetailPoke(String url);
+  Future<PokeEvolutionResponse> fetchEvolutionPoke(String url);
+  Future<PokeSpeciesResponse> fetchSpeciesPoke(String url);
 }
 
 class PokeDataSourceImpl implements PokeDataSource {
-  Dio dio;
+  final Dio dio;
   PokeDataSourceImpl({required this.dio});
 
   @override
@@ -35,9 +37,9 @@ class PokeDataSourceImpl implements PokeDataSource {
   }
 
   @override
-  Future<PokeDetailResponse> fetchDetailPoke(int id) async {
+  Future<PokeDetailResponse> fetchDetailPoke(String url) async {
     try {
-      final response = await dio.get('${apiEndpoint}pokemon/$id');
+      final response = await dio.get(url);
       if (response.statusCode == 200) {
         var result = PokeDetailResponse.fromJson(response.data);
         return result;
@@ -48,13 +50,28 @@ class PokeDataSourceImpl implements PokeDataSource {
       throw ServerException(e.toString());
     }
   }
-  
+
   @override
-  Future<PokeEvolutionResponse> fetchEvolutionPoke(int id) async {
+  Future<PokeEvolutionResponse> fetchEvolutionPoke(String url) async {
     try {
-      final response = await dio.get('${apiEndpoint}evolution-chain/$id');
+      final response = await dio.get(url);
       if (response.statusCode == 200) {
         var result = PokeEvolutionResponse.fromJson(response.data);
+        return result;
+      } else {
+        throw ServerException(response.statusMessage!);
+      }
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<PokeSpeciesResponse> fetchSpeciesPoke(String url) async {
+    try {
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        var result = PokeSpeciesResponse.fromJson(response.data);
         return result;
       } else {
         throw ServerException(response.statusMessage!);

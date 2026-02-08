@@ -403,7 +403,6 @@ class Sprites {
   String? frontDefault;
   String? frontShiny;
   Other? other;
-  Versions? versions;
 
   Sprites({
     this.backDefault,
@@ -411,7 +410,6 @@ class Sprites {
     this.frontDefault,
     this.frontShiny,
     this.other,
-    this.versions,
   });
 
   Sprites.fromJson(Map<String, dynamic> json) {
@@ -420,9 +418,6 @@ class Sprites {
     frontDefault = json['front_default'];
     frontShiny = json['front_shiny'];
     other = json['other'] != null ? Other.fromJson(json['other']) : null;
-    versions = json['versions'] != null
-        ? Versions.fromJson(json['versions'])
-        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -435,9 +430,6 @@ class Sprites {
     data['front_shiny'] = frontShiny;
     if (other != null) {
       data['other'] = other!.toJson();
-    }
-    if (versions != null) {
-      data['versions'] = versions!.toJson();
     }
     return data;
   }

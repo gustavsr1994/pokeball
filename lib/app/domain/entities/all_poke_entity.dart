@@ -1,15 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokeball/app/domain/entities/detail_entity.dart';
 
 class AllPokeEntity extends Equatable {
   final String name;
-  final String image;
-  final List<String> listType;
-  const AllPokeEntity({
-    required this.name,
-    required this.image,
-    required this.listType,
-  });
-  
+  final String url;
+  DetailEntity? detail;
+  AllPokeEntity({required this.name, required this.url, this.detail,});
+
   @override
-  List<Object?> get props => [name, image, listType];
+  List<Object?> get props => [name, url, detail];
 }

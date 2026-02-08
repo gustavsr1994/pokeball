@@ -21,8 +21,9 @@ abstract class BaseController extends ChangeNotifier
   double get scaleWidth => _scaleWidth;
   late double _scaleHeight;
   double get scaleHeight => _scaleHeight;
-  // late EventBus eventBus = EventBus();
-  // RouteArguments? args;
+  
+  bool _isTablet = true;
+  bool get isTablet => _isTablet;
 
   bool _isMounted = false;
   bool get isMounted => _isMounted;
@@ -41,6 +42,7 @@ abstract class BaseController extends ChangeNotifier
     _sizeHeight = Component.sizeHeight(context);
     _scaleWidth = Component.scaleWidth(context);
     _scaleHeight = Component.scaleHeight(context);
+    _isTablet = Component.isTablet(context);
   }
 
   @override

@@ -1,12 +1,10 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/widgets.dart';
-
-class SpeciesEntity extends Equatable {
+class SpeciesEntity {
   final String color;
+  final List<String> eggGroup;
+  final String url;
   const SpeciesEntity({
-    required this.color
+    required this.color,
+    required this.eggGroup,
+    required this.url,
   });
-
-  @override
-  List<Object?> get props => [color];
 }

@@ -1,18 +1,41 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
-class DetailEntity extends Equatable {
+class DetailEntity {
+  int id;
+  String name;
   Color color;
   String image;
   List<String> listType;
   String url;
-  DetailEntity({
-    required this.image,
-    required this.listType,
-    required this.color,
-    required this.url,
-  });
+  String? eggGroup;
+  String? eggCycle;
+  num? height;
+  num? weight;
+  String? abilities;
+  List<StatEntity>? listStats;
+  List<String>? evolution;
+  List<String>? moves;
 
-  @override
-  List<Object?> get props => [image, listType, color, url];
+  DetailEntity(
+    this.id,
+    this.name,
+    this.image,
+    this.listType,
+    this.color,
+    this.url, {
+    this.eggGroup,
+    this.eggCycle,
+    this.height,
+    this.weight,
+    this.abilities,
+    this.listStats,
+    this.evolution,
+    this.moves,
+  });
+}
+
+class StatEntity {
+  String label;
+  num point;
+  StatEntity({required this.label, required this.point});
 }

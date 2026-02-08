@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pokeball/app/domain/entities/all_poke_entity.dart';
 import 'package:pokeball/app/domain/usecases/get_detail_usecase.dart';
 import 'package:pokeball/app/domain/usecases/get_poke_usecase.dart';
 import 'package:pokeball/app/domain/usecases/get_species_usecase.dart';
+import 'package:pokeball/app/presentation/pages/detail_page.dart';
 import 'package:pokeball/core/config/base/base_controller.dart';
 import 'package:pokeball/core/utils/styles/constant_color_type.dart';
 
@@ -28,7 +31,6 @@ class HomeController extends BaseController {
   @override
   void onInitState() {
     super.onInitState();
-    print('Refressh');
     pagingController.refresh();
   }
 
@@ -41,7 +43,7 @@ class HomeController extends BaseController {
       for (var element in result.data!) {
         var detail = await getDetailUsecase.call(element.url);
         var species = await getSpecialUsecase.call(detail.data!.url);
-        
+
         var color =
             colorType
                     .where((item) => item['name'] == species.data!.color)
@@ -52,10 +54,12 @@ class HomeController extends BaseController {
             name: element.name,
             url: element.url,
             detail: DetailEntity(
-              color: color,
-              image: detail.data!.image,
-              listType: detail.data!.listType,
-              url: detail.data!.url,
+              detail.data!.id,
+              detail.data!.name,
+              detail.data!.image,
+              detail.data!.listType,
+              color,
+              detail.data!.url,
             ),
           ),
         );
@@ -64,5 +68,9 @@ class HomeController extends BaseController {
     } else {
       throw Exception(result.message);
     }
+  }
+
+  void openDetail(AllPokeEntity data) {
+    Get.to(DetailPage(pageController: GetIt.I.get(), data: data,));
   }
 }

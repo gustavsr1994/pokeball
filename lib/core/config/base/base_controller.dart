@@ -45,11 +45,11 @@ abstract class BaseController extends ChangeNotifier
     _isTablet = Component.isTablet(context);
   }
 
-  @override
-  void dispose() {
-    _isMounted = false;
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _isMounted = false;
+  //   super.dispose();
+  // }
 
   @protected
   void refreshUI() {

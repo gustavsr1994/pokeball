@@ -60,6 +60,13 @@ class HomeController extends BaseController {
               detail.data!.listType,
               color,
               detail.data!.url,
+              height: detail.data!.height,
+              weight: detail.data!.weight,
+              abilities: detail.data!.abilities,
+              eggCycle: detail.data!.eggCycle,
+              eggGroup: species.data.eggGroup!,
+              listStats: detail.data!.listStats,
+
             ),
           ),
         );

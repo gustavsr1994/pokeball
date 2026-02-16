@@ -18,16 +18,15 @@ class DetailController extends BaseController {
   String label = nameTab.first;
 
   void initialPage(AllPokeEntity data) async {
-    print("Test");
     showLoading();
-    detailEntity= data;
+    detailEntity = data;
     var dataSpecial = await getSpecialUsecase.call(detailEntity!.url);
     speciesEntity = dataSpecial.data;
     dismissLoading();
   }
-  
-  void actionTap(int index){
-label = nameTab[index];
-refreshUI();
+
+  void actionTap(int index) {
+    label = nameTab[index];
+    refreshUI();
   }
 }

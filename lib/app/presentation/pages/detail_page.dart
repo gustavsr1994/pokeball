@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokeball/app/presentation/controller/detail_controller.dart';
+import 'package:pokeball/app/presentation/widget/bodyDetail/body_about.dart';
 import 'package:pokeball/core/config/base/base_view.dart';
 import 'package:pokeball/core/config/base/context_ext.dart';
 import 'package:pokeball/core/utils/misc/constant.dart';
@@ -20,9 +21,6 @@ class DetailPage extends BasePage<DetailController> {
     return BaseViewBuilder<DetailController>(
       controller: pageController,
       builder: (context, controller) {
-        if (controller.isLoading) {
-          return Center(child: TextShimmer());
-        }
         return DefaultTabController(
           length: 4,
           child: Scaffold(
@@ -121,7 +119,9 @@ class DetailPage extends BasePage<DetailController> {
                               .map((element) => Tab(text: element))
                               .toList(),
                         ),
-                        Center(child: Text(controller.label)),
+                        Container(
+                          height: controller.sizeHeight / 2,
+                          child: bodyWidget(controller.label))
                       ],
                     ),
                   ),
@@ -147,6 +147,13 @@ class DetailPage extends BasePage<DetailController> {
       },
     );
   }
+Widget bodyWidget(String nameTab){
+  switch (nameTab) {
+    case "About":
+      return BodyAbout(pageController: pageController);
+    default:
+      return Text(nameTab);
+  }
 
-  // Widget body
+}
 }

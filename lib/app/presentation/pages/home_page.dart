@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pokeball/app/domain/entities/all_poke_entity.dart';
+import 'package:pokeball/app/presentation/widget/card_item.dart';
 import 'package:pokeball/core/config/base/base_view.dart';
 import 'package:pokeball/core/config/base/context_ext.dart';
 import 'package:pokeball/core/utils/styles/color_pallete.dart';
@@ -75,7 +76,7 @@ class HomePage extends BasePage<HomeController> {
                               ),
                             ),
                             itemBuilder: (context, item, index) {
-                              return cardPoke(item);
+                              return CardItem(item, pageController: controller);
                             },
                           ),
                           gridDelegateBuilder: (_) =>
@@ -95,85 +96,11 @@ class HomePage extends BasePage<HomeController> {
     );
   }
 
-  Widget cardPoke(AllPokeEntity item) {
-    return ControlledWidgetBuilder<HomeController>(
-      builder: (context, controller) {
-        return InkWell(
-          onTap: () => controller.openDetail(item),
-          child: Card(
-            elevation: 5,
-            color: item.detail!.color,
-            margin: EdgeInsets.all(5),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 20 * controller.scaleWidth,
-                horizontal: 10 * controller.scaleWidth,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.name.toUpperCase(),
-                    style: context.textStyles.medium.bold.withColor(
-                      item.detail!.color == whiteColor
-                          ? grayColor
-                          : fontWhiteColor,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: item.detail!.listType
-                            .map(
-                              (element) => Container(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 3 * controller.scaleWidth,
-                                  horizontal: 13 * controller.scaleWidth,
-                                ),
-                                margin: EdgeInsets.only(
-                                  top: 5 * controller.scaleWidth,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: item.detail!.color,
-                                  border: Border.all(
-                                    color: item.detail!.color == whiteColor
-                                        ? grayColor
-                                        : fontWhiteColor,
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(25),
-                                  ),
-                                ),
-                                child: Text(
-                                  element,
-                                  style: context.textStyles.small.bold.withColor(
-                                    item.detail!.color == whiteColor
-                                        ? grayColor
-                                        : fontWhiteColor,
-                                  ),
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                      Image.network(
-                        item.detail!.image,
-                        fit: BoxFit.cover,
-                        height:
-                            (controller.isTablet ? 40 : 70) *
-                            controller.scaleWidth,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
+  // Widget cardPoke(AllPokeEntity item) {
+  //   return ControlledWidgetBuilder<HomeController>(
+  //     builder: (context, controller) {
+  //       return ;
+  //     },
+  //   );
+  // }
 }

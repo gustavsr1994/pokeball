@@ -46,10 +46,9 @@ class PokeRepositoryImpl implements PokeRepository {
         height: result.height! / 10,
         weight: result.weight! / 10,
         abilities: result.abilities!
-            .where((element) => element.isHidden == false)
             .map((e) => e.ability!.name!)
             .toList()
-            .reduce((value, element) => '$value,$element'),
+            .reduce((value, element) => '$value, $element'),
         listStats: result.stats!
             .map(
               (element) => StatEntity(
@@ -79,6 +78,7 @@ class PokeRepositoryImpl implements PokeRepository {
         color: result.color!.name!,
         eggGroup: result.eggGroups!.map((element) => element.name!).toList(),
         url: result.evolutionChain!.url!,
+        
       );
       return Resource.success(data);
     } on ServerException catch (e) {

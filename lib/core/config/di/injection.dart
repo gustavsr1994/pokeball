@@ -20,6 +20,6 @@ Future init() async {
   getIt.registerLazySingleton(() => GetSpecialUsecase(getIt()));
   getIt.registerLazySingleton(() => GetEvolutionUsecase(getIt()));
 
-  getIt.registerLazySingleton(() => HomeController(getIt(), getIt(), getIt()));
-  getIt.registerLazySingleton(() => DetailController(getIt(), getIt()));
+  getIt.registerFactory(() => DetailController(getIt(), getIt()));
+  getIt.registerFactory(() => HomeController(getIt(), getIt(), getIt()));
 }
